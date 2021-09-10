@@ -3,31 +3,28 @@ package com.example.talkversity;
 import com.example.talkversity.Entities.Roles;
 import com.example.talkversity.Entities.Users;
 import com.example.talkversity.Infrastructure.RolesRepository;
-import com.example.talkversity.Infrastructure.UserRepository;
+import com.example.talkversity.Infrastructure.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.List;
 
 @SpringBootApplication
 public class TalkversityApplication implements CommandLineRunner  {
-//	@Autowired
-//	BCryptPasswordEncoder bCryptPasswordEncoder;
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
 	private RolesRepository rolesRepository;
 
 	@Autowired
-	private UserRepository userRepository;
+	private UsersRepository usersRepository;
 
 	public static void main(String[] args) {
-		System.out.println("I from main");
-
 
 		SpringApplication.run(TalkversityApplication.class, args);
 	}
@@ -45,17 +42,17 @@ public class TalkversityApplication implements CommandLineRunner  {
 
 			// create a default admin account
 			Date date = new Date(1997,11,1);
-			Users admin1= new Users ("Ahmad","Ali","Ali",date,"male","admin","password");
+			Users admin1= new Users ("Ahmad","Ali","Ali",date,"male","admin", bCryptPasswordEncoder.encode("password"));
 			Roles admin1Role= rolesRepository.findRolesByName("ADMIN");
 			admin1.addRole(admin1Role);
-			userRepository.save(admin1);
+			usersRepository.save(admin1);
 
 			// create a default main admin account
 			Date date2 = new Date(1997,11,1);
-			Users Mainadmin= new Users ("Ahmad","Ali","Ali",date2,"male","main_admin","password");
+			Users Mainadmin= new Users ("Ahmad","Ali","Ali",date2,"male","main_admin",bCryptPasswordEncoder.encode("password"));
 			Roles MainadminRole= rolesRepository.findRolesByName("MAIN_ADMIN");
 			Mainadmin.addRole(MainadminRole);
-			userRepository.save(Mainadmin);
+			usersRepository.save(Mainadmin);
 
 		}
 

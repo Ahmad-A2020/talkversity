@@ -1,11 +1,15 @@
 package com.example.talkversity.Entities;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Users {
+public class Users implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,12 +22,18 @@ public class Users {
     private String gender;
 
     @Column(unique = true)
-    private String userName;
+    private String username;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     private String password;
 
     public Users() {
     }
+
+
 
     @ManyToMany
     @JoinTable(
@@ -47,7 +57,7 @@ public class Users {
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
     }
 
@@ -75,12 +85,39 @@ public class Users {
         return gender;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {
         return password;
+    }
+
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
     }
 
     public Set<Roles> getRoles() {
