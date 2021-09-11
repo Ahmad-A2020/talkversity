@@ -68,7 +68,7 @@ public class MainController {
 
         UsernamePasswordAuthenticationToken authentication= new UsernamePasswordAuthenticationToken(newUser,null,new ArrayList<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new RedirectView("/");
+        return new RedirectView("/home");
     }
     @GetMapping("/login-error")
     public String login(HttpServletRequest request, Model model) {
