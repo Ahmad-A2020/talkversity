@@ -1,18 +1,18 @@
 package com.example.talkversity.Entities;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
+@Table(name="users")
 public class Users implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstname;
@@ -20,28 +20,32 @@ public class Users implements UserDetails {
     private String lastname;
     private Date dateOfBirth;
     private String gender;
+    private String faculty;
 
     @Column(unique = true)
     private String username;
+    private String password;
 
+
+    public Users() {
+    }
     public void setUsername(String username) {
         this.username = username;
     }
 
-    private String password;
-
-    public Users() {
-    }
 
 
-
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.MERGE,
+                    CascadeType.REFRESH
+            })
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name="user_id") ,
             inverseJoinColumns = @JoinColumn(name="role_id")
     )
-    Set<Roles> roles= new HashSet<>();
+   private  Set<Roles> roles= new HashSet<>();
 
     /**
      * This function to add role to the user who may have more than one
@@ -50,14 +54,25 @@ public class Users implements UserDetails {
     public void addRole(Roles role){
         roles.add(role);
     }
-
-    public Users(String firstname, String midname, String lastname, Date dateOfBirth, String gender,  String userName, String password) {
+    // admin constructor
+    public Users(String firstname, String midname, String lastname, Date dateOfBirth, String gender,  String username, String password) {
         this.firstname = firstname;
         this.midname = midname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.username = userName;
+        this.username = username;
+        this.password = password;
+    }
+    // student constructor
+    public Users(String firstname, String midname, String lastname, Date dateOfBirth, String gender, String faculty, String username, String password) {
+        this.firstname = firstname;
+        this.midname = midname;
+        this.lastname = lastname;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.faculty = faculty;
+        this.username = username;
         this.password = password;
     }
 
@@ -91,8 +106,16 @@ public class Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<Roles> roles = this.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for (Roles role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+
+        return authorities;
     }
+
 
     public String getPassword() {
         return password;
@@ -102,22 +125,26 @@ public class Users implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
+
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
+    }
+    public String getFaculty() {
+        return faculty;
     }
 
     public Set<Roles> getRoles() {

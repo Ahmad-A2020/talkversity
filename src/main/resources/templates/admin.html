@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml"><head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<button   onclick="ShowFunction()"> Add Course</button>
+
+<fieldset style="display: none" id="addCourseForm" >
+    <legend style="font-size: x-large"> Add New Course</legend>
+
+<form  th:method="post" th:action="@{/addcourse}"  >
+
+    <label  th:for="courseName"> Course Name: </label>
+    <input type="text" id="courseName" name="courseName">
+    <br>
+
+    <label  th:for="instructor"> Instructor Name: </label>
+    <input type="text" id="instructor" name="instructor">
+    <br>
+
+    <label for="creditNumber" > Credit Hours:</label>
+    <select name="creditNumber" id="creditNumber">
+        <option value="1"> 1</option>
+        <option value="2"> 2</option>
+        <option value="3"> 3</option>
+    </select>
+
+    <label  th:for="tution"> Cost per Hour: </label>
+    <input type="number" id="tution" name="price">
+    <br>
+
+    <label for="days" > Lecture Days:</label>
+    <select name="lectureDays" id="days">
+        <option value="Sunday"> Sunday</option>
+        <option value="Monday"> Monday</option>
+        <option value="Tuesday"> Tuesday</option>
+        <option value="Wednesday"> Wednesday</option>
+        <option value="Thursday"> Thursday</option>
+        <option value="Monday&Wednesday"> Monday&Wednesday </option>
+        <option value="Sunday&Thursday"> Sunday&Thursday</option>
+    </select>
+    <br>
+
+    <input type="submit" th:value="Submit">
+</form>
+</fieldset>
+
+    <div th:if="${not #lists.isEmpty(courses)}">
+
+    <table >
+        <tr>
+           <th>Course Name</th>
+            <th>Instructor</th>
+            <th> Credit Hours:</th>
+            <th>Hour Price </th>
+            <th>Days</th>
+        </tr>
+        <tr th:each="course:${courses}">
+            <td th:text="${course.name}"></td>
+            <td th:text="${course.instructor}"></td>
+            <td th:text="${course.creditNumbers}"></td>
+            <td th:text="${course.costPerCredit}"></td>
+            <td th:text="${course.days}"></td>
+            <td><a th:href="@{/deleteCourse/{id}(id=${course.id})}"> <button> Delete</button></a> </td>
+        </tr>
+    </table>
+    </div>
+
+<script>
+function ShowFunction() {
+  document.getElementById("addCourseForm").style.display = "block";
+}
+</script>
 </body>
 </html>

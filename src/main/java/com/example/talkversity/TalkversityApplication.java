@@ -42,14 +42,14 @@ public class TalkversityApplication implements CommandLineRunner  {
 
 			// create a default admin account
 			Date date = new Date(1997,11,1);
-			Users admin1= new Users ("Ahmad","Ali","Ali",date,"male","admin", bCryptPasswordEncoder.encode("password"));
+			Users admin1= new Users ("Ahmad","Ali","Ali",date,"male","admin", bCryptPasswordEncoder.encode("1234567"));
 			Roles admin1Role= rolesRepository.findRolesByName("ADMIN");
 			admin1.addRole(admin1Role);
 			usersRepository.save(admin1);
 
 			// create a default main admin account
 			Date date2 = new Date(1997,11,1);
-			Users Mainadmin= new Users ("Ahmad","Ali","Ali",date2,"male","main_admin",bCryptPasswordEncoder.encode("password"));
+			Users Mainadmin= new Users ("Ahmad","Ali","Ali",date2,"male","main_admin",bCryptPasswordEncoder.encode("12345"));
 			Roles MainadminRole= rolesRepository.findRolesByName("MAIN_ADMIN");
 			Mainadmin.addRole(MainadminRole);
 			usersRepository.save(Mainadmin);

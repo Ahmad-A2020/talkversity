@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:c="http://www.w3.org/1999/XSL/Transform" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://www.thymeleaf.org ">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+
 <div style="margin-top: 10%" class="login-form">
     <fieldset>
         <legend style="font-size: x-large"> Log In</legend>
@@ -20,7 +27,7 @@
                 <input type="password" name="password" class="form-control" placeholder="Password">
             </div>
             <input type="submit" class="btn btn-black" value="Login"></input>
-            <button class="buttonsign"><a class="buttonA" th:href="@{/signup}" >sign up</a></button>
+            <button class="buttonsign"><a class="buttonA" th:href="@{/signup}">sign up</a></button>
 
 
         </form>

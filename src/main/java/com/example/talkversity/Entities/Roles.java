@@ -1,15 +1,14 @@
 package com.example.talkversity.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Roles {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -32,5 +31,8 @@ public class Roles {
     public void setName(String name) {
         this.name = name;
     }
+
+//    @ManyToMany(mappedBy = "roles", fetch=FetchType.EAGER)
+//    private Set<Users> userSet = new HashSet<Users>();
 
 }

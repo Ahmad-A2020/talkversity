@@ -26,25 +26,70 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // to configure the authentication
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
-
     }
 
     // to configure  the authorization
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-//                .antMatchers("/admin").hasAnyRole("ADMIN","MAIN_ADMIN")
-//                .antMatchers("/user").hasAnyRole("STUDENT","ADMIN","MAIN_ADMIN")
-//                .antMatchers("/","/login","/*.css","/*.PNG","/*.png","/*.js").permitAll()
-                .anyRequest().authenticated()//any other pages you have to be authenticated
-                .and().formLogin().loginPage("/login")
-                .defaultSuccessUrl("/login")
-                .permitAll()
-                ;
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/","/login","/*.css","/*.PNG","/*.png","/*.js","/signup","/admin","/home").permitAll()
+//                .antMatchers("/", "/signup","/login","/*.css","/*.PNG","/H2-console/**", "/addDrug","/UserDrugs", "https://dailymed.nlm.nih.gov/dailymed/services/v2/*","/reviews").permitAll()
+//                .antMatchers("/","/about", "/signup","/login","/*.css","/*.PNG","/*.png","/*.js","/*.svg","/*.ttf","/resources/**","/fonts/**","/css/**","/contactform/**","/img/**","/js/**").permitAll()
+//                .antMatchers("/resources/**").permitAll()
+//                .antMatchers("/*.css").permitAll()
+//                .antMatchers("/*.js").permitAll()
+//                .antMatchers("/*.PNG").permitAll()
+//                .antMatchers("/*.jpg").permitAll()
+//                .antMatchers("/resources/**").permitAll()
+//
+//                .antMatchers("/admin").hasAuthority("ADMIN")
+//                .antMatchers("/courses").hasAnyAuthority("STUDENT","ADMIN","MAIN_ADMIN")
+//                .anyRequest().authenticated()//any other pages you have to be authenticated
+//                .and().formLogin().loginPage("/login")
+//                .defaultSuccessUrl("/home", true)
+//                .failureUrl("/login-error")
+//                .permitAll()
+//                .usernameParameter("username").passwordParameter("password")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/login")
+//                .permitAll()
+//                ;
 //        http.csrf().disable();
 //        http.headers().frameOptions().disable();
+//
+//    }
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+
+                .authorizeRequests()
+                .antMatchers("/home", "/signup","/login","/*.css","/*.PNG").permitAll()
+                .antMatchers("/","/about", "/signup","/login","/*.css","/*.PNG","/*.png","/*.js","/*.svg","/*.ttf","/resources/**","/fonts/**","/css/**","/img/**","/js/**").permitAll()
+                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/*.css").permitAll()
+                .antMatchers("/*.js").permitAll()
+                .antMatchers("/*.PNG").permitAll()
+                .antMatchers("/*.jpg").permitAll()
+                .antMatchers("/admin").hasAuthority("ADMIN")
+                .antMatchers("/courses").hasAuthority("STUDENT")
+                .anyRequest().authenticated()//any other pages you have to be authenticated
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
+                .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/access-denied");
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 }
