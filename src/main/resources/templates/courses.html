@@ -26,7 +26,6 @@
                 <th> Hours No.</th>
                 <th>Hour Price </th>
                 <th>Days</th>
-                <th>Delete</th>
             </tr>
             <tr th:each="course:${courses}">
                 <td th:text="${course.name}"></td>
@@ -34,7 +33,6 @@
                 <td th:text="${course.creditNumbers}"></td>
                 <td th:text="${course.costPerCredit}"></td>
                 <td th:text="${course.days}"></td>
-                <td><a th:href="@{/deleteCourse/{id}(id=${course.id})}"> <button> Delete</button></a> </td>
             </tr>
         </table>
     </div>

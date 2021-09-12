@@ -14,6 +14,7 @@ public class StudentsController {
     @Autowired
     CourseRepository courseRepository;
 
+     // fetch all courses data and send it to the courses.html template to be rendered
     @GetMapping("/courses")
     public String adminPage(Model m){
         List<Course> courses= courseRepository.findAll();

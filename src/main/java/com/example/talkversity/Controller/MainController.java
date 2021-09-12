@@ -32,11 +32,19 @@ public class MainController {
     @Autowired
     RolesRepository rolesRepository;
 
+    // home page endpoint
+
     @GetMapping("/home")
     public String homePage(){
         return "home.html";
     }
 
+    @GetMapping("/")
+    public String homePage2(){
+        return "home.html";
+    }
+
+    // login
     @GetMapping("/login")
     public String logIn(){
         return "login.html";
@@ -51,7 +59,10 @@ public class MainController {
         return "signup";
     }
 
-
+    // create new student account (role STUDENT),
+    // as there is one admin, the account set up at the command runner
+    // if there is need to add more than one admin then another role with main-admin will
+    // be allowed to reach such feature
 
     @PostMapping("/signup")
     public RedirectView regester(@RequestParam String firstname,
@@ -70,6 +81,8 @@ public class MainController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return new RedirectView("/home");
     }
+
+    // catch the log in errors
     @GetMapping("/login-error")
     public String login(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);

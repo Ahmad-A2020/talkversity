@@ -18,7 +18,11 @@ public class AdminController {
     @Autowired
     CourseRepository courseRepository;
 
-
+    /**
+     * this response of this endpoint is return the all courses exist at the DB
+     * @param m
+     * @return
+     */
     @GetMapping("/admin")
     public String adminPage(Model m){
         List<Course> courses= courseRepository.findAll();
@@ -26,6 +30,17 @@ public class AdminController {
         return "admin.html";
 
     }
+
+    /**
+     * create new course and save it at the database using the following data come with
+     * the following params:
+     * @param courseName
+     * @param instructor
+     * @param creditNumber
+     * @param price
+     * @param lectureDays
+     * @return
+     */
 
     @PostMapping("/addcourse")
     public RedirectView addCourse(
@@ -40,6 +55,13 @@ public class AdminController {
         return new RedirectView("/admin");
     }
 
+    /**
+     * the delete button create request that hold variable path
+     * the id of the course at the database, on which it  used to track the course and delete it
+     * from the database
+     * @param id
+     * @return
+     */
     @GetMapping("/deleteCourse/{id}")
     public RedirectView deleteCourse(@PathVariable Long id){
         courseRepository.deleteById(id);
