@@ -1,0 +1,38 @@
+
+# navBoarder span:last-child{
+  color:gray;
+    font-family: "Lucida Console", "Courier New", monospace;
+
+}
+
+#myNavbar > ul > li > a{
+border-left: 1px solid grey;
+}
+
+#myNavbar > ul > li > a > span:nth-child(3){
+color:gray;
+
+  font-family: Verdana, sans-serif;
+
+font-style: italic;
+font-size: 12px;
+  text-transform: lowercase;
+
+}
+#myNavbar > ul > li> a{
+padding-top: 0;
+    padding-bottom: 0;
+}
+.navbar-nav>li>a{
+}
+body > header > div > nav > div > div > div.navbar-header > a > img{
+    margin-top: -50px;
+    height: 600%;
+    position: relative;
+    right: 60px;
+
+}
+#footer > div.top-footer{
+background-color: #0a2038;
+}
+

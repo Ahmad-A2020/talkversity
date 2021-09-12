@@ -3,11 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:c="http://www.w3.org/1999/XSL/Transform" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="https://www.thymeleaf.org ">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="fragment :: head" xmlns:th="http://www.w3.org/1999/xhtml" >
+
 <body>
+<header th:replace="fragment :: header"></header>
+
 
 <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
 
@@ -33,5 +33,12 @@
         </form>
     </fieldset>
 </div>
+<footer th:replace="fragment :: footer"></footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="contactform/contactform.js"></script>
+
 </body>
 </html>

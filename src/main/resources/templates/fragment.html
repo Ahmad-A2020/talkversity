@@ -3,15 +3,12 @@
 <head th:fragment="head">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medilab Free Bootstrap HTML5 Template</title>
-  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+  <title>university website fragment</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%7CRaleway%7CCandal">
   <link rel="stylesheet"  th:href="@{/css/font-awesome.min.css}">
-<!--  <link rel="stylesheet"  th:href="@{/css/bootstrap.min.css}">-->
+  <link rel="stylesheet"  th:href="@{/css/bootstrap.min.css}">
   <link rel="stylesheet"  th:href="@{/css/style.css}">
-<!--  <link rel="stylesheet" th:href="@{/css/reviews.css}">-->
   <link rel="stylesheet" th:href="@{/css/fragment.css}">
 
 
@@ -19,8 +16,9 @@
 <body>
 <header th:fragment="header">
   <div>
-    <nav style="background-color: #1b6d85" class="navbar navbar-default navbar-fixed-top">
+    <nav style="background-color: #25467d" class="navbar navbar-default navbar-fixed-top">
       <div class="container">
+
         <div class="col-md-12">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -28,26 +26,26 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img style="margin-top: -30px; height: 400%; position: relative; right: 60px;" src="/large_talkversity.png" class="img-responsive"></a>
+            <a class="navbar-brand" href="#"><img src="/large_talkversity.png" class="img-responsive"></a>
           </div>
           <div class="collapse navbar-collapse navbar-right" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li class=""><a href="/events">Events</a></li>
+              <li class="active"><a href="/home"> <span>Home </span>  <br/> <span> All variations</span> </a></li>
+              <li class=""><a href="/events"> <span>Events </span>  <br/> <span> our activities</span>  </a></li>
 
-              <li sec:authorize ="isAnonymous()">  <a href="/login" > Login</a> </li>
-              <li sec:authorize ="isAnonymous()"> <a href="/signup" > SignUp</a> </li>
+              <li sec:authorize ="isAnonymous()">  <a href="/login"  >  <span>Login </span>  <br/> <span> access services</span>  </a> </li>
+              <li sec:authorize ="isAnonymous()"> <a href="/signup" > <span>SignUp </span>  <br/> <span> create account</span></a> </li>
 
-              <li sec:authorize="hasAuthority('ADMIN')"><a href="/admin">Add Course </a></li>
-              <li sec:authorize="hasAuthority('STUDENT')"><a href="/courses">Courses </a></li>
+              <li sec:authorize="hasAuthority('ADMIN')"><a href="/admin"><span>admin </span>  <br/> <span> Add Course</span> </a></li>
+              <li sec:authorize="hasAuthority('STUDENT')"><a href="/courses"><span>Courses </span>  <br/> <span> Research & Study</span> </a></li>
 
-              <li class=""><a href="/">About Us</a></li>
-              <li class=""><a href="/">Contact Us</a></li>
-
-
+              <li class=""><a href="/home"> <span>About Us </span>  <br/> <span> Vision & Mission</span></a></li>
+<!--              <li class=""><a href="/">Contact Us</a></li>-->
 
 
-              <li class="" sec:authorize ="isAuthenticated()"><a href="/logout">Logout</a></li>
+
+
+              <li class="" sec:authorize ="isAuthenticated()"><a href="/logout"><span>Logout </span>  <br/> <span> Security</span></a></li>
 
               <li sec:authorize="isAuthenticated()" id="user"><span sec:authentication="name" ></span>  </li>
 
@@ -63,5 +61,48 @@
 <!--footer-->
 
 <!--/ footer-->
+<footer style="margin-top: auto" id="footer" th:fragment="footer">
+  <div class="top-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 marb20">
+          <div class="ftr-tle">
+            <h4 class="white no-padding">About Us</h4>
+          </div>
+          <div class="info-sec">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 marb20">
+          <div class="ftr-tle">
+            <h4 class="white no-padding">Quick Links</h4>
+          </div>
+          <div class="info-sec">
+            <ul class="quick-info">
+              <li><a href="/home"><i class="fa fa-circle"></i>Home</a></li>
+              <li><a href="/home"><i class="fa fa-circle"></i>About Us</a></li>
+              <li><a href="/home"><i class="fa fa-circle"></i>Events</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 marb20">
+          <div class="ftr-tle">
+            <h4 class="white no-padding">Follow us</h4>
+          </div>
+          <div class="info-sec">
+            <ul class="social-icon">
+              <li class="bglight-blue"><i class="fa fa-facebook"></i></li>
+              <li class="bgred"><i class="fa fa-google-plus"></i></li>
+              <li class="bgdark-blue"><i class="fa fa-linkedin"></i></li>
+              <li class="bglight-blue"><i class="fa fa-twitter"></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</footer>
 </body>
 </html>
