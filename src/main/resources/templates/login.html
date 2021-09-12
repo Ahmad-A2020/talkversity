@@ -8,7 +8,7 @@
 <body>
 <header th:replace="fragment :: header"></header>
 
-
+<main>
 <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
 
 
@@ -33,12 +33,12 @@
         </form>
     </fieldset>
 </div>
+</main>
+
 <footer th:replace="fragment :: footer"></footer>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.easing.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
-<script src="contactform/contactform.js"></script>
-
 </body>
 </html>

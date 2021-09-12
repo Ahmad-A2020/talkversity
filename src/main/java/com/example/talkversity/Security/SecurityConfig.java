@@ -69,14 +69,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests()
                 .antMatchers("/home", "/signup","/login","/*.css","/*.PNG").permitAll()
-                .antMatchers("/","/about", "/signup","/login","/*.css","/*.PNG","/*.png","/*.js","/*.svg","/*.ttf","/resources/**","/fonts/**","/css/**","/img/**","/js/**").permitAll()
+                .antMatchers("/","/about","/courses", "/signup","/login","/*.css","/*.PNG","/*.png","/*.js","/*.svg","/*.ttf","/resources/**","/fonts/**","/css/**","/img/**","/js/**").permitAll()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/*.css").permitAll()
                 .antMatchers("/*.js").permitAll()
                 .antMatchers("/*.PNG").permitAll()
                 .antMatchers("/*.jpg").permitAll()
                 .antMatchers("/admin").hasAuthority("ADMIN")
-                .antMatchers("/courses").hasAuthority("STUDENT")
+                .antMatchers("/courses").hasAnyAuthority("STUDENT","ADMIN")
                 .anyRequest().authenticated()//any other pages you have to be authenticated
                 .and()
                 .formLogin()

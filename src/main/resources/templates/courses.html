@@ -1,33 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+<head th:replace="fragment :: head" xmlns:th="http://www.w3.org/1999/xhtml" >
+
 <body>
 
+<header th:replace="fragment :: header"></header>
+<main style="min-height: 500px;margin-top: 10%;" >
 
-<div th:if="${not #lists.isEmpty(courses)}">
 
-    <table >
-        <tr>
-            <th>Course Name</th>
-            <th>Instructor</th>
-            <th> Credit Hours:</th>
-            <th>Hour Price </th>
-            <th>Days</th>
-        </tr>
-        <tr th:each="course:${courses}">
-            <td th:text="${course.name}"></td>
-            <td th:text="${course.instructor}"></td>
-            <td th:text="${course.creditNumbers}"></td>
-            <td th:text="${course.costPerCredit}"></td>
-            <td th:text="${course.days}"></td>
-            <td><a th:href="@{/deleteCourse/{id}(id=${course.id})}"> <button> Delete</button></a> </td>
-        </tr>
-    </table>
-</div>
+    <div th:if="${ #lists.isEmpty(courses)}">
+        <p> no courses !</p>
+    </div>
 
+    <div th:if="${not #lists.isEmpty(courses)}">
+        <h1 > Courses Schedule</h1>
+
+        <table >
+            <tr>
+                <th>Course Name</th>
+                <th>Instructor</th>
+                <th> Hours No.</th>
+                <th>Hour Price </th>
+                <th>Days</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="course:${courses}">
+                <td th:text="${course.name}"></td>
+                <td th:text="${course.instructor}"></td>
+                <td th:text="${course.creditNumbers}"></td>
+                <td th:text="${course.costPerCredit}"></td>
+                <td th:text="${course.days}"></td>
+                <td><a th:href="@{/deleteCourse/{id}(id=${course.id})}"> <button> Delete</button></a> </td>
+            </tr>
+        </table>
+    </div>
+</main>
+<footer th:replace="fragment :: footer"></footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+
+<script>
+function ShowFunction() {
+  document.getElementById("addCourseForm").style.display = "block";
+}
+</script>
 </body>
 </html>

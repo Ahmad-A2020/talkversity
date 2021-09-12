@@ -26,12 +26,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-h1, h2, h3, h4, h5, h6
-{
-	font-family: 'Raleway', sans-serif;
-	font-weight: 600;
-	color: #222222;
-}
+
 a, a:hover, a:focus, a:active{
     outline: none;
 }
@@ -110,8 +105,7 @@ body > main > div > div > div > fieldset{
     left: 342px;
     bottom: 7px;
 }
-
-body > div > fieldset{
+body > main > div > fieldset{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     font-family: 'Open Sans', sans-serif;
@@ -125,6 +119,137 @@ body > div > fieldset{
     width: 40%;
     margin: auto;
     margin-bottom: 5%;
+}
+body > main > div > fieldset > form > div:nth-child(7) > label{
+}
+body > main > div > fieldset > form > div:nth-child(7) > div > label:nth-child(3){
+align-items: center;
+    display: flex;
+}
+body > main > div > fieldset > form > div:nth-child(7) > div > label:nth-child(1){
+align-items: center;
+    display: flex;
+}
+#male, #female{
+width:100px;
+height:20px;
+margin-left:-50px;
+    font-family: 'Open Sans', sans-serif;
+    color: #999999;
+    font-size: 16px;
+
+}
+body > main > div > fieldset > form > div:nth-child(7) > div{
+display: flex;
+border: 1px solid #ccc;
+    justify-content:  space-evenly;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    height: 40px;
+    align-items: flex-end;
+}
+body > main > div > fieldset > form > input{
+color: #337ab7;
+box-sizing: border-box;
+border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+}
+#addCourseForm{
+
+    width: 40%;
+    margin: auto;
+    margin-top:2%;
+
+}
+
+#addCourseForm > form > label{
+    width: 150px
+}
+#addCourseForm > form > input {
+    width: 300px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#addCourseForm > form > input[type=submit]:nth-child(21){
+
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+        margin: 0em;
+        padding: 1px 6px;
+        border-width: 2px;
+        border-style: outset;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+        border-image: initial;
+        background-color: #efefef;
+        color: #337ab7;
+        width: 150px;
+
+}
+body > main > div > p{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+
+    text-align: center;
+    margin: auto;
+    margin-top: 2%;
+    width: 80%;
+    padding: 2%;
+
+    display: flex;
+    height: 400px;
+    align-content: space-around;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+h1
+{
+	    font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        color: #222222;
+        text-align: center;
+        margin-top: 5%;
+}
+
+#addCourseForm > form > select{
+    width: 300px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+body > main > button{
+        color: white;
+        margin-left: 46%;
+        background-color: #4272c1;
+        border-radius: 21px;
+        height: 49px;
+        width: 167px;
+        font-size: 20px;
+        font-family: 'Oswald', sans-serif;
 }
 
 #parag{
@@ -169,53 +294,11 @@ body > div{
     margin-top: 7%;
     margin-left: 2%;
 }
-#profileDiv{
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgb(19 14 14);
-    font-family: system-ui;
-    line-height: 30px;
-    font-weight: 500;
-    color: #4c3d3d;
-    font-size: 20px;
-    box-sizing: border-box;
-    margin-top: 7%;
-    margin-left: 30%;
-    border: 1px solid;
-    width: 40%;
-    padding: 50px;
-    padding-left: 7%;
-    background-color: aliceblue;
-    margin-bottom: 5%;
-}
-#profileDiv > p:nth-child(6){
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgb(19 14 14);
-    box-sizing: border-box;
-    margin: 0 0 10px;
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit;
-    font-size: 20px;
-}
-#profileDiv > p:nth-child(7){
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgb(19 14 14);
-    box-sizing: border-box;
-    margin: 0 0 10px;
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit;
-    font-size: 20px;
-}
+
 .span{
     color: #2d485f;
 }
-.profileImg{
-    width: 20%;
-    border-radius: 50%;
-}
+
 #user > span{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -275,11 +358,13 @@ body > div.buttons > a:nth-child(2){
     margin-left: 5%;
     margin-right: 5%;
 }
+
 table,tr, td, th{
     border: 1px solid black;
 
 }
-body > main > table{
+
+body > main > div > table{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     font-family: 'Open Sans', sans-serif;
@@ -292,12 +377,32 @@ body > main > table{
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid;
-    width: 40%;
+    width: 80%;
     margin: auto;
-    margin-bottom: 10%;
+    margin-bottom: 15%;
+    margin-top: 3%;
+
+
 }
- th, td {
+ th {
+    color: #25467d;
+    font-family: auto;
+    font-size: 20px;
+    height: 40px;
     text-align: center;
+    padding: 2%;
+    min-width: 200px;
+
+ }
+td {
+    border: 0px solid #ededed;
+    border-top: 1px solid rgba(216, 216, 216, 0.5);
+    padding: 6px 10px 6px 0;
+        color: #25467d;
+        font-family: auto;
+        background-color: #c3cee4;
+        text-align: center;
+        width: fit-content;
 }
 
 
@@ -497,11 +602,7 @@ cta-1
     font-weight: 400 !important;
     cursor: pointer;
 }
-td {
-    border: 0px solid #ededed;
-    border-top: 1px solid rgba(216, 216, 216, 0.5);
-    padding: 6px 10px 6px 0;
-}
+
 .medi-info, .time-info{
     font-size: 14px;
 }

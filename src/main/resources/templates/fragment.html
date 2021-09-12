@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%7CRaleway%7CCandal">
   <link rel="stylesheet"  th:href="@{/css/font-awesome.min.css}">
   <link rel="stylesheet"  th:href="@{/css/bootstrap.min.css}">
-  <link rel="stylesheet"  th:href="@{/css/style.css}">
   <link rel="stylesheet" th:href="@{/css/fragment.css}">
+  <link rel="stylesheet"  th:href="@{/css/style.css}">
 
 
 </head>
@@ -31,13 +31,13 @@
           <div class="collapse navbar-collapse navbar-right" id="myNavbar">
             <ul class="nav navbar-nav">
               <li class="active"><a href="/home"> <span>Home </span>  <br/> <span> All variations</span> </a></li>
-              <li class=""><a href="/events"> <span>Events </span>  <br/> <span> our activities</span>  </a></li>
+              <li class=""><a href="/home"> <span>Events </span>  <br/> <span> our activities</span>  </a></li>
 
               <li sec:authorize ="isAnonymous()">  <a href="/login"  >  <span>Login </span>  <br/> <span> access services</span>  </a> </li>
               <li sec:authorize ="isAnonymous()"> <a href="/signup" > <span>SignUp </span>  <br/> <span> create account</span></a> </li>
 
               <li sec:authorize="hasAuthority('ADMIN')"><a href="/admin"><span>admin </span>  <br/> <span> Add Course</span> </a></li>
-              <li sec:authorize="hasAuthority('STUDENT')"><a href="/courses"><span>Courses </span>  <br/> <span> Research & Study</span> </a></li>
+              <li sec:authorize="isAuthenticated()"><a href="/courses"><span>Courses </span>  <br/> <span> Research & Study</span> </a></li>
 
               <li class=""><a href="/home"> <span>About Us </span>  <br/> <span> Vision & Mission</span></a></li>
 <!--              <li class=""><a href="/">Contact Us</a></li>-->
